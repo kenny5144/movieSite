@@ -5,7 +5,7 @@ import { Text,Link, Box, Flex, Image } from "@chakra-ui/react";
 
 const Gernes = ({settitle}) => {
 
-  const { status, error, data, isFetching } = Api('Games', "games" )
+  const { status, error, data, isFetching } = Api('genres', 'genres' )
   
   console.log(data)
   if (status ==="loading") return <div>Loading...</div>;

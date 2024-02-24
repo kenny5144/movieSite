@@ -10,14 +10,12 @@ export function Api(Endpoint, queryKey){
   return useQuery({
    queryKey: [queryKey],
    queryFn: async () =>{
+    const url= `${Base_Url}/${Endpoint}?key=${Key}`
+    console.log(url);
 
-    const response = await fetch(`${Base_Url}/${Endpoint}?key=${Key}`);
-    const data = await response.json();
+    const response = await fetch(url);
+    return  await response.json();
     
-    // log data to check its value (remove it after the issue is fixed)
-    console.log(data);
-    
-    return data;
      
     } 
   })
