@@ -1,19 +1,27 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Main from './components/Main'
 import './App.css'
 import { ChakraProvider } from '@chakra-ui/react'
-function App() {
-  const [count, setCount] = useState(0)
+import {
+  
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
+const queryClient= new QueryClient()
 
+function App() {
+  
   return (
     <>
-    <ChakraProvider>
 
-      <div>
-        this is the begining of the game site 
-      </div>
+    <QueryClientProvider client={queryClient}>
+    <ChakraProvider>
+     <Main/>
     </ChakraProvider>
+    </QueryClientProvider>
+
     </>
   )
 }
