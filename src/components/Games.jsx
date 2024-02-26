@@ -5,9 +5,16 @@ import {
   useQuery,
 } from '@tanstack/react-query'
 import { useState } from "react";
+import useApi from "./Api";
+import Platform from "./Platform/Platform";
 const Games = ({ title }) => {
-  
-
+  const [GameData , setGameData]= useState()
+  const { isLoading ,data, isError, isFetching} = useApi('games');
+  console.log(data)
+ 
+   if (isLoading){
+    return <div>loading</div>
+   }
  
   return (
     <>
@@ -17,9 +24,8 @@ const Games = ({ title }) => {
           {title} Games
         </Text>
       <Flex>
-        <Select w='10rem' variant='outline' placeholder="Platforms">
-          
-        </Select>
+        <Platform setGameData={setGameData}/>
+        
         <Select w='10rem'  variant='ouline' placeholder="Fliter">
          
         </Select>

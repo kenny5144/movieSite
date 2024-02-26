@@ -8,7 +8,7 @@ import {
   const Key="a9f46bc038fe4b49a1f24a8543740ba8"
   
   // gettingData("genres")
- export default function Api(Endpoint) {
+ export default function useApi(Endpoint) {
   console.log(Endpoint)
 const url= `${Base_Url}/${Endpoint}?key=${Key}`
 console.log(url)
@@ -18,7 +18,6 @@ console.log(url)
         const { data } = await axios.get(
           url
         )
-        console.log(data)
         return data
       },
     })
