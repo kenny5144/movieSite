@@ -1,16 +1,14 @@
 import React from "react";
-import {Api} from "../api.js";
+import Api from "../api.js";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { Text,Link, Box, Flex, Image } from "@chakra-ui/react";
 
 const Gernes = ({settitle}) => {
-
-  const { status, error, data, isFetching } = Api('genres', 'genres' )
-  
-  console.log(data)
-  if (status ==="loading") return <div>Loading...</div>;
-  if (status==="error") return <div>Error fetching data</div>;
-
+  const { status, data, error, isFetching } = Api("genres")
+  status === 'loading' ? <div>loading</div>:""
+    status === 'error' ? <div>{error}</div>:""
+   
+console.log(data)
   const handleclick = (event) => {
     console.log("hi" + event.target.innerHTML );
     settitle(event.target.innerHTML)

@@ -1,6 +1,14 @@
 import { Text, Box, Flex,Select, Image } from "@chakra-ui/react";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
 import { useState } from "react";
 const Games = ({ title }) => {
+  
+
+ 
   return (
     <>
       <Box mt="3rem">
