@@ -9,9 +9,7 @@ import {
   
   // gettingData("genres")
  export default function useApi(Endpoint) {
-  console.log(Endpoint)
 const url= `${Base_Url}/${Endpoint}?key=${Key}`
-console.log(url)
     return useQuery({
       queryKey: [Endpoint],
       queryFn: async () => {

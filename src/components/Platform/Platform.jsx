@@ -1,24 +1,21 @@
 import React, { useState } from "react";
 import { Text, Box, Flex, Select, Image } from "@chakra-ui/react";
-import useApi from "../Api";
+import useApi from "../api";
 const Platform = ({ setGameData }) => {
   const [select, setselect] = useState();
-  console.log(Select);
   const { isLoading, data, isError, isFetching } = useApi("platforms");
-  console.log(data.results);
   if (isLoading) {
     return <div>loading</div>;
   }
-  const handleSelect=(e)=>{
-      const v=e.target.value
-      console.log(v)
-    setselect(v)
-    console.log(select)
-    console.log(data.results.pc)
-    // if (select){
-    //     // setGameData(data.)
-    // }
-  }
+  const handleSelect = (e) => {
+    const v = e.target.value;
+   
+
+    const Gamedata = data.results.find((p) => p.name === v);
+    setGameData(Gamedata.games)
+    setselect(v);
+  };
+
   return (
     <>
       <Select

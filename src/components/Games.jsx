@@ -1,21 +1,31 @@
-import { Text, Box, Flex,Select, Image } from "@chakra-ui/react";
+import {
+  Text,
+  Stack,
+  Card,
+  Heading,
+  Box,
+  CardBody,
+  Flex,
+  Select,
+  Image,
+} from "@chakra-ui/react";
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
-} from '@tanstack/react-query'
+} from "@tanstack/react-query";
 import { useState } from "react";
-import useApi from "./Api";
+import useApi from "./api";
 import Platform from "./Platform/Platform";
 const Games = ({ title }) => {
-  const [GameData , setGameData]= useState()
-  const { isLoading ,data, isError, isFetching} = useApi('games');
-  console.log(data)
- 
-   if (isLoading){
-    return <div>loading</div>
-   }
- 
+  const [GameData, setGameData] = useState();
+  console.log(GameData);
+  const { isLoading, data, isError, isFetching } = useApi("games");
+
+  if (isLoading) {
+    return <div>loading</div>;
+  }
+
   return (
     <>
       <Box mt="3rem">
@@ -23,15 +33,31 @@ const Games = ({ title }) => {
           {" "}
           {title} Games
         </Text>
-      <Flex>
-        <Platform setGameData={setGameData}/>
-        
-        <Select w='10rem'  variant='ouline' placeholder="Fliter">
-         
-        </Select>
-      </Flex>
+        <Flex>
+          <Platform setGameData={setGameData} />
+
+          <Select w="10rem" variant="ouline" placeholder="Fliter"></Select>
+        </Flex>
+        <Box>
+          {GameData && GameData.map((info) => {
+            return (
+              <Card key={info.id} maxW="sm">
+                <CardBody>
+                  <Image
+                    src={info.slug}
+                    alt="game image"
+                    borderRadius="lg"
+                  />
+                  <Stack mt="6" spacing="3">
+                    <Heading size="md">{info.name}</Heading>
+                   
+                  </Stack>
+                </CardBody>
+              </Card>
+            );
+          })}
+        </Box>
       </Box>
-      <Box></Box>
     </>
   );
 };

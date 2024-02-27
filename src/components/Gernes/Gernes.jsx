@@ -1,5 +1,5 @@
 import React from "react";
-import useApi from "../Api.js";
+import useApi from "../api.js";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { Text,Link, Box, Flex, Image } from "@chakra-ui/react";
 
