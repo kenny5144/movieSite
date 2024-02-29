@@ -19,12 +19,21 @@ import useApi from "./api";
 import Platform from "./Platform/Platform";
 const Games = ({ title }) => {
   const [GameData, setGameData] = useState();
-  console.log(GameData);
-  const { isLoading, data, isError, isFetching } = useApi("games");
-
+  const { isLoading, data, isError, isFetching } = useApi(`games`);
+   
   if (isLoading) {
     return <div>loading</div>;
   }
+  if (isError) {
+    return <div>{isError}</div>;
+  }
+  const games = data.results
+
+  const gamesPlatfrom =GameData? games.filter(games=> GameData.includes(games.id)):""
+  console.log(games)
+  console.log(gamesPlatfrom)
+
+
 
   return (
     <>
@@ -39,23 +48,7 @@ const Games = ({ title }) => {
           <Select w="10rem" variant="ouline" placeholder="Fliter"></Select>
         </Flex>
         <Box>
-          {GameData && GameData.map((info) => {
-            return (
-              <Card key={info.id} maxW="sm">
-                <CardBody>
-                  <Image
-                    src={info.slug}
-                    alt="game image"
-                    borderRadius="lg"
-                  />
-                  <Stack mt="6" spacing="3">
-                    <Heading size="md">{info.name}</Heading>
-                   
-                  </Stack>
-                </CardBody>
-              </Card>
-            );
-          })}
+      
         </Box>
       </Box>
     </>
