@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { Input,Box } from '@chakra-ui/react';
 import { Switch,IconButton } from '@chakra-ui/react'
 import { InputGroup, InputLeftElement } from '@chakra-ui/react';
+import { BsSearch } from "react-icons/bs";
 
 
 const Nav = () => {
@@ -21,14 +22,9 @@ const Nav = () => {
         <Image boxSize='5rem' src={logo} alt="page logo"/>
         <span className='search '>
         <InputGroup>
-        <InputLeftElement pointerEvents='none'  >
+        <InputLeftElement children={<BsSearch/>} />
  
-
-        <IconButton  borderRadius='full'  />
-    
-
-        </InputLeftElement >
-        <Input placeholder='Search for your games  ' borderRadius='full'
+        <Input placeholder='Search for your games  ' borderRadius='full' variant='filled'
         />
         
         </InputGroup>

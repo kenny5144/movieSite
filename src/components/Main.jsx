@@ -13,14 +13,7 @@ import {
 const Main = () => {
   const [title, settitle]= useState("Action")
 
-  const { isLoading, error, data, isFetching } = useQuery({
-    queryKey: ['gernes'],
-    queryFn: () =>
-      fetch('https://api.rawg.io/api/genres?key=a9f46bc038fe4b49a1f24a8543740ba8')
-        .then((res) => res.json()),
-  })
-  if(isLoading) return "loading....."
-  if(error) return "an error has occured "+ error.message
+
   return (
     <>
         <Nav/>

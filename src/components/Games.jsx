@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 import useApi from "./api";
 import Platform from "./Platform/Platform";
+import PlatformGames from "./Platform/PlatformGames/PlatformGames";
 const Games = ({ title }) => {
   const [GameData, setGameData] = useState();
   const { isLoading, data, isError, isFetching } = useApi(`games`);
@@ -29,9 +30,6 @@ const Games = ({ title }) => {
   }
   const games = data.results
 
-  const gamesPlatfrom =GameData? games.filter(games=> GameData.includes(games.id)):""
-  console.log(games)
-  console.log(gamesPlatfrom)
 
 
 
@@ -44,9 +42,10 @@ const Games = ({ title }) => {
         </Text>
         <Flex>
           <Platform setGameData={setGameData} />
-
           <Select w="10rem" variant="ouline" placeholder="Fliter"></Select>
         </Flex>
+          <PlatformGames GameData={GameData} games={games}/>
+         
         <Box>
       
         </Box>
