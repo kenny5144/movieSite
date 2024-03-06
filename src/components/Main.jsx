@@ -11,7 +11,8 @@ import {
   useQuery,
 } from '@tanstack/react-query'
 const Main = () => {
-  const [title, settitle]= useState("Action")
+  const [title, settitle]= useState("All")
+  const [GameData, setGameData] = useState();
 
 
   return (
@@ -19,8 +20,9 @@ const Main = () => {
         <Nav/>
         <Flex>
 
-      <Gernes settitle={settitle}/>
-      <Games title={title} />
+      <Gernes settitle={settitle} setGameData={setGameData}/>
+      <Games GameData={GameData} settitle={settitle} setGameData={setGameData} title={title} />
+      
         </Flex>
     </>
   )

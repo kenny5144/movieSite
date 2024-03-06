@@ -3,7 +3,7 @@ import useApi from "../api.js";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { Text,Link, Box, Flex, Image } from "@chakra-ui/react";
 
-const Gernes = ({settitle}) => {
+const Gernes = ({settitle, setGameData}) => {
   const { isLoading ,data, isError, isFetching} = useApi('genres');
  
    if (isLoading){
@@ -13,6 +13,7 @@ const Gernes = ({settitle}) => {
   const handleclick = (event) => {
     console.log("hi" + event.target.innerHTML );
     settitle(event.target.innerHTML)
+    setGameData(null)
   };
 
   return (
@@ -23,7 +24,6 @@ const Gernes = ({settitle}) => {
           Genres
         </Text>
         {
-  // console.log(data.results)
 
         }
         {data.results.map((data) => {

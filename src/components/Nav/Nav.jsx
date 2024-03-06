@@ -1,15 +1,17 @@
 import React from 'react'
 import logo from "../../assets/logo.webp"
-import { Image } from '@chakra-ui/react'
+import { Image, useColorMode } from '@chakra-ui/react'
 import "./Nav.css"
 import { FaSearch } from "react-icons/fa";
 import { Input,Box } from '@chakra-ui/react';
 import { Switch,IconButton } from '@chakra-ui/react'
-import { InputGroup, InputLeftElement } from '@chakra-ui/react';
+import { InputGroup, Button,ButtonGroup, InputLeftElement } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { BsSearch } from "react-icons/bs";
 
 
 const Nav = () => {
+  const { colorMode, toggleColorMode } = useColorMode()
   const handleSwitch=(e)=>{
     console.log("hello")
     console.log(e)
@@ -31,9 +33,13 @@ const Nav = () => {
         </span>
         <span className='Darkmode'>
 
-        <Switch id='darkMode' onChange={handleSwitch} />
+        <Switch id='darkMode' onChange={toggleColorMode} >
+        
+          </Switch>
         <label htmlFor="darkMode">Dark mode</label>
         </span>
+        <Link to={'/Signin'}>Login
+        </Link>
       </div>
     </div>
   )

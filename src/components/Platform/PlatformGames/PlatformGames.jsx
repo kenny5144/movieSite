@@ -22,7 +22,7 @@ const PlatformGames = ({ GameData, games }) => {
       {gamesPlatfrom &&
         gamesPlatfrom.map((data) => {
           return (
-            <Flex gap={2} >
+            <Flex key={data.id} gap={2} >
 
             <Box>
 
