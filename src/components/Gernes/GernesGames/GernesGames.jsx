@@ -23,6 +23,8 @@ const GernesGames = ({title, games, setGenresgameData}) => {
   console.log(getGames)
   return (
     <>
+    <Wrap>
+
     {getGames.map((data)=>{
 
       return(
@@ -49,6 +51,7 @@ const GernesGames = ({title, games, setGenresgameData}) => {
        )
     }
     )}
+    </Wrap>
 
     
     </>

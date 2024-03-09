@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { BsSearch } from "react-icons/bs";
 
 
-const Nav = () => {
+const Nav = ({setSearchinp}) => {
   const { colorMode, toggleColorMode } = useColorMode()
   const handleSwitch=(e)=>{
     console.log("hello")
@@ -26,9 +26,11 @@ const Nav = () => {
         <InputGroup>
         <InputLeftElement children={<BsSearch/>} />
  
-        <Input placeholder='Search for your games  ' borderRadius='full' variant='filled'
+        <Input onChange={(e)=>{
+          setSearchinp(e.target.value)
+
+        }} placeholder='Search for your games  ' borderRadius='full' variant='filled'
         />
-        
         </InputGroup>
         </span>
         <span className='Darkmode'>

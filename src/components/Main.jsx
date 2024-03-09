@@ -3,7 +3,7 @@ import Nav from './Nav/Nav'
 import Gernes from './Gernes/Gernes'
 import Games from './Games'
 import { useState } from 'react'
-import { Text,Box, Flex, Image } from '@chakra-ui/react'
+import { Text,Box, Flex, Image, Wrap } from '@chakra-ui/react'
 
 import {
   QueryClient,
@@ -13,15 +13,24 @@ import {
 const Main = () => {
   const [title, settitle]= useState("All")
   const [GameData, setGameData] = useState();
+   const [searchinp , setSearchinp]=useState()
+   console.log(searchinp)
+  //  if(searchinp){
+  //   setGameData(null)
+  //   settitle(null)
 
+  // }
+  // if(title){
+  //   setSearchinp(null)
+  // }
 
   return (
     <>
-        <Nav/>
+        <Nav setSearchinp={setSearchinp}/>
         <Flex>
 
       <Gernes settitle={settitle} setGameData={setGameData}/>
-      <Games GameData={GameData} settitle={settitle} setGameData={setGameData} title={title} />
+      <Games setSearchinp={setSearchinp} searchinp={searchinp} GameData={GameData} settitle={settitle} setGameData={setGameData} title={title} />
       
         </Flex>
     </>

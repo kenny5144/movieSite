@@ -28,10 +28,7 @@ const Signin = () => {
             <label>Password</label>
           </Box>
           <a href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        
             Submit
           </a>
           <Link to={'/Signup'}>or Signup</Link>

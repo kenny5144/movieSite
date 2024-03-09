@@ -9,6 +9,7 @@ import {
   Select,
   SimpleGrid,
   Image,
+  Wrap,
 } from "@chakra-ui/react";
 
 const PlatformGames = ({ GameData, games }) => {
@@ -19,12 +20,12 @@ const PlatformGames = ({ GameData, games }) => {
   console.log(gamesPlatfrom);
   return (
     <>
+          <Wrap  gap={2} >
       {gamesPlatfrom &&
         gamesPlatfrom.map((data) => {
           return (
-            <Flex key={data.id} gap={2} >
 
-            <Box>
+            <Box key={data.id}>
 
 
             <Card  key={data.id}  maxW="sm">
@@ -42,9 +43,9 @@ const PlatformGames = ({ GameData, games }) => {
             </Card>
             </Box>
             
-            </Flex>
-          );
-        })}
+            );
+          })}
+          </Wrap>
     </>
   );
 };
