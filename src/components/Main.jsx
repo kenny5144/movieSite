@@ -14,15 +14,7 @@ const Main = () => {
   const [title, settitle]= useState("All")
   const [GameData, setGameData] = useState();
    const [searchinp , setSearchinp]=useState()
-   console.log(searchinp)
-  //  if(searchinp){
-  //   setGameData(null)
-  //   settitle(null)
-
-  // }
-  // if(title){
-  //   setSearchinp(null)
-  // }
+  
 
   return (
     <>

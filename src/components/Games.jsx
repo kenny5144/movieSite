@@ -15,7 +15,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import { useState } from "react";
-import useApi from "./api";
+import useApi from "./api.js";
 import Platform from "./Platform/Platform";
 import PlatformGames from "./Platform/PlatformGames/PlatformGames";
 import GernesGames from "./Gernes/GernesGames/GernesGames";
@@ -23,26 +23,20 @@ import Maingames from "./MainGames/Maingames";
 import Searchinp from "./SearchInput/Searchinp";
 const Games = ({ title, GameData, setGameData, setSearchinp ,searchinp, settitle }) => {
   const [GenresgamesData, setGenresgameData] = useState();
-  const { isLoading, data, isError, isFetching } = useApi(`games`);
-
+  const { isLoading, data, isError, isFetching } = useApi("games");
+  if(isLoading){
+    <div>Loading... </div>
+  }
+  if(isError){
+    <div>an error has occured {isError}</div>
+  }
+  console.log(data) 
 
   const games = data.results;
-  console.log(games) 
+
 
  
-  function DipslayRightData() {
-    if (title) {
-      <GernesGames
-        setGenresgamesData={setGenresgameData}
-        games={games}
-        title={title}
-      />;
-    } else if (GameData) {
-      <PlatformGames GameData={GameData} games={games} />;
-    } else {
-      <Maingames data={games} />;
-    }
-  }
+
 
   return (
     <>
@@ -78,7 +72,6 @@ const Games = ({ title, GameData, setGameData, setSearchinp ,searchinp, settitle
           )
         }
 
-        <Box></Box>
       </Box>
     </>
   );

@@ -6,9 +6,12 @@ import { Text,Link, Box, Flex, Image } from "@chakra-ui/react";
 const Gernes = ({settitle, setGameData}) => {
   const { isLoading ,data, isError, isFetching} = useApi('genres');
  
-   if (isLoading){
-    return <div>loading</div>
-   }
+  if(isLoading){
+    <div>Loading... </div>
+  }
+  if(isError){
+    <div>an error has occured {isError}</div>
+  }
 
   const handleclick = (event) => {
     console.log("hi" + event.target.innerHTML );

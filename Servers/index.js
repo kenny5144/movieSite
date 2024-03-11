@@ -1,16 +1,43 @@
 import express from "express";
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 import mongoose from "mongoose";
-import cors from 'cors'
-dotenv.config()
-import {UserRouter} from './routes/user.js'
+// dotenv.config()
 const uri='mongodb+srv://ojok761:Iamkehindeojo123@gamesite.jmpbm1v.mongodb.net'
 const app = express()
+import {User} from "./data/Userdetails.js"
 app.use(express.json())
-app.use(cors())
-app.use('/auth', UserRouter)
-mongoose.connect(`${uri}/authentication`)
-app.listen(process.env.PORT, ()=>{
+// require("./data/Userdetails")
+mongoose.connect(uri).then(()=>{
+console.log("Database Connected ")
+})
+.catch((e)=>{
+    console.log(e)
+})
+
+// app.get("/signup", (req , res)=>{
+//     console.log("hi");
+//     res.send({status:"Started"})
+// })
+
+app.post('/signup', async (req , res)=>{
+        const {UserName , Email , Password}=req.body
+        const emailexist= await User.findOne({Email:Email})
+        if (emailexist){
+            return res.send({data:"User already exist !!"})
+        }
+        try{
+                await User.create({
+                    UserName: UserName,
+                    Email: Email,
+                    Password
+                });
+                res.send({status:"ok", data:"user Created "})
+        }catch(err){
+            res.send({
+                status:"err", data: err
+            })
+        }
+})
+app.listen(5173, ()=>{
     console.log("server is running k ")
-}
-)
+})
